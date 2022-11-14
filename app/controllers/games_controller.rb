@@ -3,6 +3,7 @@ require 'json'
 
 class GamesController < ApplicationController
   def new
+    @current_score = params[:score]
     @grid = generate_grid(10).join
     @start_time = Time.now
   end
@@ -12,8 +13,10 @@ class GamesController < ApplicationController
     @attempt = params[:attempt]
     start_time = Time.parse(params[:start_time])
     end_time = Time.now
-
     @result = run_game(@attempt, grid, start_time, end_time)
+
+    @total_score = 0
+    @total_score = params[:score].to_f + @result[:score]
   end
 
   private
