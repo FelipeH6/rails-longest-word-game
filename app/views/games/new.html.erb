@@ -1,0 +1,14 @@
+
+<h1>WELCOME TO THE LONGEST WORD GAME</h1>
+
+<h2>Grid: </h2>
+ <% @grid.each_char do |letter| %>
+ <h3 class="btn btn-primary"><%= letter %></h3>
+ <% end %>
+
+<form action="<%= result_path %>" method="get">
+  <input type="text" name="attempt" class="form-text">
+  <input type="hidden" name="grid" value="<%= @grid %>">
+  <input type="hidden" name="start_time" value="<%= @start_time %>">
+  <input type="submit" value="GO" class="btn btn-primary">
+</form>
